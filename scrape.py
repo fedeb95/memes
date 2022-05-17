@@ -15,19 +15,19 @@ def appendRow(file, data, timestamp):
 
 
 def main():
-    limit = 10
+    limit = 100
     reddit_time = 'hour' # hour, year, etc...
-    view = 'hot' #rising, new, ...
+    feed = 'new' # feeds different from new are rounded
 
     headers = {'User-agent': 'Firefox'}
 
     # First get which posts to track
-    res = requests.get(f'https://www.reddit.com/r/dankmemes/{view}.json?limit={limit}&t={reddit_time}', headers=headers).json()
+    res = requests.get(f'https://www.reddit.com/r/dankmemes/{feed}.json?limit={limit}&t={reddit_time}', headers=headers).json()
 
     tracked = [ p['data']['name']  for p in res['data']['children'] ]
 
     timestamp = str(dt.now()).replace(' ', '_')
-    with open(f'data_{timestamp}.csv', 'w') as file:
+    with open(f'data_{feed}_{limit}_{reddit_time}_{timestamp}.csv', 'w') as file:
         file.write('time;name;upvotes;downvotes;upvote_ratio;score\n')
         while True:
             timestamp = str(dt.now())
