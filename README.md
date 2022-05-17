@@ -29,3 +29,7 @@ Data analysis:
 2. try fitting with power law
 
 TODO investigate if Reddit API has better stuff for my goals
+
+Findings:
+
+- with one hour data (data_2022-05-17_22:13:17.696999.csv), only 1 in 10 memes was successfull, following a straight line in upvotes increase (with 'new' feed)

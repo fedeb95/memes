@@ -17,11 +17,12 @@ def appendRow(file, data, timestamp):
 def main():
     limit = 10
     reddit_time = 'hour' # hour, year, etc...
+    view = 'hot' #rising, new, ...
 
     headers = {'User-agent': 'Firefox'}
 
     # First get which posts to track
-    res = requests.get(f'https://www.reddit.com/r/dankmemes/new.json?limit={limit}&t={reddit_time}', headers=headers).json()
+    res = requests.get(f'https://www.reddit.com/r/dankmemes/{view}.json?limit={limit}&t={reddit_time}', headers=headers).json()
 
     tracked = [ p['data']['name']  for p in res['data']['children'] ]
 
