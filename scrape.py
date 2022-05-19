@@ -1,4 +1,5 @@
 from datetime import datetime as dt
+from datetime import timedelta
 import threading
 import time
 
@@ -17,7 +18,7 @@ def appendRow(file, data, timestamp):
 def main():
     limit = 100
     reddit_time = 'hour' # hour, year, etc...
-    feed = 'hot' # feeds different from new are rounded
+    feed = 'new' # feeds different from new are rounded
 
     headers = {'User-agent': 'Firefox'}
 
@@ -26,10 +27,12 @@ def main():
 
     tracked = [ p['data']['name']  for p in res['data']['children'] ]
 
-    timestamp = str(dt.now()).replace(' ', '_')
+    now = dt.now()
+    end = now + timedelta(hours=10)
+    timestamp = str(now).replace(' ', '_')
     with open(f'data_{feed}_{limit}_{reddit_time}_{timestamp}.csv', 'w') as file:
         file.write('time;name;upvotes;downvotes;upvote_ratio;score\n')
-        while True:
+        while dt.now() < end:
             timestamp = str(dt.now())
             print(f"{timestamp} | Collecting {tracked}")
             for post in tracked:
