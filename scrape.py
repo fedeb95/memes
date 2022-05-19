@@ -17,7 +17,7 @@ def appendRow(file, data, timestamp):
 def main():
     limit = 100
     reddit_time = 'hour' # hour, year, etc...
-    feed = 'new' # feeds different from new are rounded
+    feed = 'hot' # feeds different from new are rounded
 
     headers = {'User-agent': 'Firefox'}
 
