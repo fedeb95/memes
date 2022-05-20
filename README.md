@@ -6,16 +6,16 @@ Study on meme diffusions on the internet. Reddit is taken as the source for meme
 
 ## Hypothesis:
 
-Meme diffusion follows a power law.
+Meme diffusion follows a power law. That is, given a number of competing posts, success of posts can be approximated with a power law distribution.
 
 ## Methodology:
 Scrape Reddit for new posts and follow their evolution for an appropriate period of time (which is...?)
-Try to fit it to a Power Law distribution for the most successful posts.
+Try to fit data at the end of the tracking period to a Power Law distribution.
 
 TODO find out:
-- appropriate length of time to monitor posts
-- appropriate number of posts 
-- appropriate poll time for new stats about tracked posts 
+- appropriate length of time to monitor posts (trying 10h)
+- appropriate number of posts (trying 100)
+- appropriate poll time for new stats about tracked posts (trying every second + requests time)
 
 ### Data scraping:
 
@@ -38,5 +38,4 @@ TODO investigate if Reddit API has better stuff for my goals
 
 ## Findings:
 
-- with one hour data (data_2022-05-17_22:13:17.696999.csv), only 1 in 10 posts was successfull, following a straight line in upvotes increase (with 'new' feed)
-- with 100 elements (data_new_100_hour_2022-05-17_23:26:35.380098.csv) but for just ten minutes, a power law seems a better fit then an exponential for the best post at the end of the tracking period 
+- first result doesn't quite fit a power law, but the most successful post got a stop in increase after 3 hours. 
